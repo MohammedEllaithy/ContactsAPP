@@ -1,0 +1,43 @@
+
+<mat-card>
+  <form (submit)="onAddContact(AddContForm)" #AddContForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="contact.name"
+        [ngModel]="contact.name"
+        required
+        minlength="3"
+        placeholder="Enter Contact Name"
+        #name="ngModel">
+      <!-- <mat-error *ngIf="name.invalid">Please enter contact name.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [ngModel]="contact.email"
+        required
+        placeholder="Enter Contact Email"
+        #email="ngModel">
+      <!-- <mat-error *ngIf="email.invalid">Please enter contact email.</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="tel"
+        name="phone"
+        [ngModel]="contact.phone"
+        required
+        placeholder="Enter Contact Phone Number"
+        #phone="ngModel">
+      <!-- <mat-error *ngIf="phone.invalid">Please Enter Contact Phone Number.</mat-error> -->
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Contact</button>
+  </form>
+</mat-card>

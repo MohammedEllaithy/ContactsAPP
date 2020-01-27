@@ -1,0 +1,24 @@
+
+<div class="col-lg-9 mt-5">
+  <div class="col-lg-6  mb-5">
+    <input class="form-control text-info"   type="text" name="search" [(ngModel)]="filter" placeholder="Search">
+  </div>
+<mat-spinner  *ngIf="isLoading"></mat-spinner>
+<mat-accordion   multi="true" *ngIf="contacts.length > 0">
+  <mat-expansion-panel *ngFor="let contact of contacts |filter: filter"  >
+    <mat-expansion-panel-header  class="text-info">
+
+
+      {{ contact.name}}
+    </mat-expansion-panel-header>
+    <p class="text-success">{{ contact.email }} </p>
+    <p class="text-danger">{{ contact.phone }}</p>
+
+    <mat-action-row class="bg-light" >
+      <a mat-button color="primary" [routerLink]="['/edit', contact.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(contact.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="contacts.length <= 0">No contacts added yet!</p>
+</div>
